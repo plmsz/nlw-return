@@ -15,14 +15,19 @@ npm install phosphor-react
 `npm install @headlessui/react`
 
 # Screenshot
+
 npm install html2canvas
+
+```tsx
+const canvas = html2canvas(document.querySelector('html')!);
+const base64image = (await canvas).toDataURL('image/png');
+```
 
 # Tailwind - using postcss
 
 `npm install -D tailwindcss postcss autoprefixer npx tailwindcss init -p`
 npm install -D @tailwindcss/forms
 npm install --save-dev tailwind-scrollbar
-
 
 Files:
 
@@ -92,12 +97,19 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar'),],
+  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar')],
 };
 ```
 
 ```tsx
  <button className='bg-brand-500 rounded-full px-3 h-12 text-white'>
+```
+
+## Botão desabilitado
+
+```tsx
+ <button  type='submit'  disabled={comment.length === 0} className='p-2 bg-brand-500 rounded-md border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500'
+          / >
 ```
 
 ## Estilo baseado no estado pai (group-{modifier})
@@ -186,13 +198,15 @@ type FeedbackType = keyof typeof feedBackTypes
 
 # Tipando props - useState
 
+Pai
+
 ```tsx
 const [feedBackType, setFeedbackType] = useState<FeedbackType | null>(null);
 /* ... */
-  <button onClick={() => onFeedbackTypeChanged(key as FeedbackType)}>
+<FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />;
 ```
 
-````tsx
+```tsx
 interface FeedbackTypeStepProps {
   onFeedbackTypeChanged: (type: FeedbackType) => void;
 }
@@ -201,6 +215,17 @@ export function FeedbackTypeStep({
   onFeedbackTypeChanged,
 }: FeedbackTypeStepProps) {
   /* ... */
+  {
+    Object.entries(feedBackTypes).map(([key, value]) => {
+      return (
+        <button
+          key={key}
+          onClick={() => onFeedbackTypeChanged(key as FeedbackType)}
+        >
+          <span>{value.title}</span>
+        </button>
+      );
+    });
+  }
 }
-```tsx
-````
+```
