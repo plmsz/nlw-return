@@ -108,8 +108,11 @@ module.exports = {
 ## Botão desabilitado
 
 ```tsx
- <button  type='submit'  disabled={comment.length === 0} className='p-2 bg-brand-500 rounded-md border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500'
-          / >
+<button
+  type='submit'
+  disabled={comment.length === 0}
+  className='p-2 bg-brand-500 rounded-md border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500'
+/>
 ```
 
 ## Estilo baseado no estado pai (group-{modifier})
@@ -229,3 +232,76 @@ export function FeedbackTypeStep({
   }
 }
 ```
+
+---
+
+Back-end
+
+npm init -y
+npm i typescript @types/node ts-node-dev -D
+npx tsc --init
+npm i express
+npm i -D @types/express
+npm i prisma -D
+npm i @prisma/client
+npx prisma init
+
+Instalar extensão prisma
+
+"[prisma]": {
+  "editor.defaultFormatter": "Prisma.prisma"
+},
+
+Criar src
+
+# tsconfig
+
+```json
+"target": "es2020",
+"rootDir": "./src",
+"outDir": "./dist"
+```
+
+# script
+
+    "dev": "ts-node-dev src/server.ts"
+
+# prisma
+
+generator client {
+provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+env
+DATABASE_URL="file:./dev.db"
+
+## Auto incremento com id unico
+
+id String @id @default(uuid())
+
+Alternativas: snowflake id
+
+## criar tabelas
+npx prisma migrate dev
+
+nomeia
+
+npx prisma studio
+
+## prisma ts - acessa o banco de dados 
+import { PrismaClient } from '@prisma/client';
+
+export const prisma = new PrismaClient({
+    log: ['query']
+})
+
+# insominia
+http://localhost:3333/feedbacks
+
+# nodemailer
+npm i nodemailer
+npm i @types/nodemailer
