@@ -294,15 +294,18 @@ nomeia
 npx prisma studio
 
 ## prisma ts - acessa o banco de dados
+
 ```ts
 import { PrismaClient } from '@prisma/client';
 
 export const prisma = new PrismaClient({
-log: ['query']
-})
+  log: ['query'],
+});
 ```
+
 Para criar a migration
 npx prisma migrate dev --name nomedamigration
+
 # insomnia
 
 http://localhost:3333/feedbacks
@@ -376,3 +379,23 @@ app.listen(3333, () => {
 });
 ```
 
+# Testes
+
+npm install jest -D
+npx jest --init
+
+y y node yes v8 y
+
+npm install ts-node -D
+npm i -D jest @swc/core @swc/jest
+
+module.exports = {
+transform: {
+"^.+\\.(t|j)sx?$": ["@swc/jest"],
+},
+};
+
+npm i @types/jest -D
+
+npm i cors
+npm i @type/cors -D
