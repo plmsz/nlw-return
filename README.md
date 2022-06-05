@@ -399,3 +399,36 @@ npm i @types/jest -D
 
 npm i cors
 npm i @type/cors -D
+
+# startsWith (string)
+if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
+      throw new Error('Invalid screenshot format');
+    }
+
+# Mobile
+npm install -g expo-cli
+expo init mobile --npm (usar a flag para instalar com npm)
+blank typescript
+expo start
+
+extensão rcomponent
+rnso
+rnbc
+
+expo install @expo-google-fonts/inter expo-font
+expo install expo-splash-screen
+npm install --save phosphor-react-native
+expo install react-native-svg
+npm i react-native-iphone-x-helper
+npm i @gorhom/bottom-sheet
+expo install react-native-reanimated
+
+no babel:
+  plugins: ['react-native-reanimated/plugin'],
+
+no app:
+import 'react-native-gesture-handler';
+
+expo install react-native-gesture-handler
+
+expo start --clear
