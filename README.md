@@ -264,7 +264,10 @@ Criar src
 
 # script
 
-    "dev": "ts-node-dev src/server.ts"
+"test": "jest --watch",
+"dev": "ts-node-dev src/server.ts",
+"build": "npx tsc",
+"start": "node dist/server.js"
 
 # prisma
 
@@ -401,11 +404,17 @@ npm i cors
 npm i @type/cors -D
 
 # startsWith (string)
+
 if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
-      throw new Error('Invalid screenshot format');
-    }
+throw new Error('Invalid screenshot format');
+}
+
+# Integração
+
+npm i axios
 
 # Mobile
+
 npm install -g expo-cli
 expo init mobile --npm (usar a flag para instalar com npm)
 blank typescript
@@ -424,7 +433,7 @@ npm i @gorhom/bottom-sheet
 expo install react-native-reanimated
 
 no babel:
-  plugins: ['react-native-reanimated/plugin'],
+plugins: ['react-native-reanimated/plugin'],
 
 no app:
 import 'react-native-gesture-handler';
@@ -436,3 +445,50 @@ expo start --clear
 expo install react-native-view-shot
 
 npm i expo-file-system
+
+ipconfig (ver o ip)
+npm i axios
+
+---
+
+Quando criar booleanos em váriavel de estado algo que remeta ao que está acontecendo
+ex:
+🤚 [loading, setLoading] = useState(false)
+🆗 [isSendingFeedback, setIsSendingFeedback] = useState(false)
+
+---
+
+deploy
+
+web
+
+env.local
+VITE_API_URL= 'http://localhost:3333'
+
+---
+
+server
+
+generator client {
+provider = "prisma-client-js"
+}
+
+datasource db {
+provider = "postgresql"
+url = env("DATABASE_URL")
+}
+
+model Feedback {
+id String @id @default(uuid())
+
+type String
+comment String
+screenshot String?
+
+@@map("feedbacks")
+}
+
+---
+
+ts config
+"include": ["src"]
