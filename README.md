@@ -432,3 +432,7 @@ import 'react-native-gesture-handler';
 expo install react-native-gesture-handler
 
 expo start --clear
+
+expo install react-native-view-shot
+
+npm i expo-file-system
