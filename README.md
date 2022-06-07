@@ -458,13 +458,14 @@ ex:
 
 ---
 
-deploy
+# deploy
 
 web
 
 env.local
 VITE_API_URL= 'http://localhost:3333'
 
+vercel
 ---
 
 server
@@ -492,3 +493,11 @@ screenshot String?
 
 ts config
 "include": ["src"]
+
+---
+railway
+criar banco postgres
+
+app.listen(process.env.PORT || 3333, () => {
+  console.log('HTTP server running');
+});
