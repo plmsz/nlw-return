@@ -17,7 +17,7 @@
 Um Component Widget para feedback que pode ser utilizado em qualquer site.
 
 <p align="center">
-  <img alt="./nlw.png">
+  <img alt="Projeto" src="nlw.png">
 </p>
 
 ## 🔧 Tecnologias
