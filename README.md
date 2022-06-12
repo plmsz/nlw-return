@@ -5,8 +5,6 @@
 <p align="center">Trilha Impulse do Evento Next Level Week Return.</p>
 
 <p align="center">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-2ecc71">
-
   <a href="https://www.linkedin.com/in/plmsz/" target="_blank">
     <img alt="Follow me Linkedin" src="https://img.shields.io/badge/Follow%20up-plmsz-2ecc71?style=social&logo=linkedin">
   </a>
